@@ -13,22 +13,8 @@ import javax.persistence.SequenceGenerator;
 public class User {
 
 	private long userId;
-//	private String username;
-//	private String password;
-//	private String email;
-////	private PersonalInformation personalInformation;
-//	private String role;
+
 	private Team team;
-//	private boolean showPersonalInfo = false;
-//	private int latitude;
-//	private int longitude;
-	
-//	private String name;
-//	private String phone;
-//	private String surname;
-//	private String country;
-//	
-//	private Set<Place> placesICanSee = new HashSet<Place>();
 	
 	public User() {
 	}
