@@ -3,8 +3,6 @@ package com.jpizarro.th.lib.team.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import com.jpizarro.th.lib.user.entity.UserTO;
-
 public class TeamTO implements Serializable {
 	/**
 	 * 

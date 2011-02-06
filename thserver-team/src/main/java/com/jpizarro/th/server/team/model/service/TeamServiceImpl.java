@@ -3,11 +3,12 @@ package com.jpizarro.th.server.team.model.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jpizarro.th.lib.team.entity.TeamTO;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
 import com.jpizarro.th.server.team.model.entity.Team;
-import com.jpizarro.th.server.team.model.entity.TeamTO;
 import com.jpizarro.th.server.team.model.persistence.accessor.TeamAccessor;
+import com.jpizarro.th.server.team.util.TeamUtils;
 
 @Service
 public class TeamServiceImpl implements TeamService {
@@ -24,7 +25,7 @@ public class TeamServiceImpl implements TeamService {
 	public TeamTO find(Long id) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		Team team = teamAccessor.find(id);
-		TeamTO teamTO = new TeamTO(team);
+		TeamTO teamTO = TeamUtils.teamTOFromTeam(team);
 
 		return teamTO;
 	}

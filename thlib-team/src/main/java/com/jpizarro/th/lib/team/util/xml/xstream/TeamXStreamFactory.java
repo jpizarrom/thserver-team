@@ -23,9 +23,8 @@ public class TeamXStreamFactory implements XStreamFactory
 		xstream.addImplicitCollection(TeamsTO.class, "teams", TeamTO.class);
 		xstream.addImplicitCollection(UsersTO.class, "users", UserTO.class);
 		
-
-		
 		xstream.alias("user", UserTO.class);
+		xstream.alias("user", com.jpizarro.th.lib.team.entity.UserTO.class);
 
 		xstream.alias("team", TeamTO.class);
 		
