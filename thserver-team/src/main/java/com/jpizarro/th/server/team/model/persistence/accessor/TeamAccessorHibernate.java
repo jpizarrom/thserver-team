@@ -1,5 +1,7 @@
 package com.jpizarro.th.server.team.model.persistence.accessor;
 
+import org.springframework.stereotype.Service;
+
 import com.jpizarro.th.server.generic.model.persistence.accessor.GenericAccessorHibernate;
 import com.jpizarro.th.server.team.model.entity.Team;
 
