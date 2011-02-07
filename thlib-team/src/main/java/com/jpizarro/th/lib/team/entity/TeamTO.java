@@ -3,6 +3,9 @@ package com.jpizarro.th.lib.team.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("team")
 public class TeamTO implements Serializable {
 	/**
 	 * 
