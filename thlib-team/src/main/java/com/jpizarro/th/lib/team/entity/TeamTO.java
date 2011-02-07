@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 @XStreamAlias("team")
 public class TeamTO implements Serializable {
@@ -17,6 +18,8 @@ public class TeamTO implements Serializable {
 //	private List<Competitor> competitors;
 //	private List<Hint> hints;
 	private int currentUsers;
+
+//	@XStreamImplicit
 	private List<UserTO> users;
 	
 	public TeamTO(String name) {

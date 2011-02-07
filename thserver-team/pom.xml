@@ -501,7 +501,7 @@
 							<sources>
 								<!--<source>thlib</source> -->
 								<source>../../generic/thlib-generic/src/main/java/</source>
-                                <source>../../user/thlib-user/src/main/java/</source>
+<!--                                <source>../../user/thlib-user/src/main/java/</source>-->
                                 <source>../../team/thlib-team/src/main/java/</source>
 							</sources>
 						</configuration>
