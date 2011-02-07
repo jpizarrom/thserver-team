@@ -1,12 +1,16 @@
 package com.jpizarro.th.lib.team.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 @XStreamAlias("team")
+@XmlRootElement(name="team")
 public class TeamTO implements Serializable {
 	/**
 	 * 
@@ -19,8 +23,7 @@ public class TeamTO implements Serializable {
 //	private List<Hint> hints;
 	private int currentUsers;
 
-//	@XStreamImplicit
-	private List<UserTO> users;
+	private List<UserTO> users = new ArrayList<UserTO>();
 	
 	public TeamTO(String name) {
 		super();

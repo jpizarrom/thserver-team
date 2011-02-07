@@ -17,9 +17,10 @@ public class TeamServiceImpl implements TeamService {
 	private TeamAccessor teamAccessor;
 
 	@Override
+	@Transactional
 	public void create(TeamTO entity) throws DuplicateInstanceException {
 		// TODO Auto-generated method stub
-		
+		teamAccessor.create(TeamUtils.teamFromTeamTO(entity));
 	}
 
 	@Override
