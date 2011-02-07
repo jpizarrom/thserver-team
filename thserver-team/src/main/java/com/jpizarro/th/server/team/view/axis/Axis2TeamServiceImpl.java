@@ -1,20 +1,20 @@
-package com.jpizarro.th.server.team.model.service;
+package com.jpizarro.th.server.team.view.axis;
+
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.jpizarro.th.lib.team.entity.TeamTO;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
-import com.jpizarro.th.server.team.model.entity.Team;
-import com.jpizarro.th.server.team.model.persistence.accessor.TeamAccessor;
-import com.jpizarro.th.server.team.util.TeamUtils;
+import com.jpizarro.th.server.team.model.service.TeamService;
 
-@Service
-public class TeamServiceImpl implements TeamService {
+@WebService(serviceName="TeamService")
+//@SOAPBinding(style=SOAPBinding.Style.RPC)
+public class Axis2TeamServiceImpl implements Axis2TeamService {
 	@Autowired
-	private TeamAccessor teamAccessor;
+	private TeamService teamService;
 
 	@Override
 	public void create(TeamTO entity) throws DuplicateInstanceException {
@@ -25,16 +25,13 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	public TeamTO find(Long id) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
-		Team team = teamAccessor.find(id);
-		TeamTO teamTO = TeamUtils.teamTOFromTeam(team);
-
-		return teamTO;
+		return teamService.find(id);
 	}
 
 	@Override
 	public boolean exists(Long id) {
 		// TODO Auto-generated method stub
-		return teamAccessor.exists(id);
+		return teamService.exists(id);
 	}
 
 	@Override
@@ -44,17 +41,12 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
-	@Transactional
-	public void remove(Long id) throws InstanceNotFoundException {
+	public boolean remove(Long id) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
-		teamAccessor.remove(id);
+		teamService.remove(id);
+		return true;
 		
 	}
 
-	@Override
-	public void join(long userId, long teamId) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

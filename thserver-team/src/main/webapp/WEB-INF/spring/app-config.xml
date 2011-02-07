@@ -12,7 +12,7 @@
 	<context:property-placeholder location="classpath:business.properties" />
 
 	<context:component-scan annotation-config="true"
-		base-package="com.jpizarro.th.server" />
+		base-package="com.jpizarro.th" />
 
 	<!-- ======================= Spring Infrastructure ==================== -->
 
@@ -122,8 +122,8 @@
 	<!-- Axis2. -->
 	<!-- ******************************************************************* -->
 	<!-- Configure spring to give a hook to axis2 without a ServletContext -->
-	<!--<bean id="applicationContext"
-		class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder" />-->
+	<bean id="applicationContext"
+		class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder" />
 
 	<!-- <bean id="springAwareService" class="com.jpizarro.th.server.view.axis.SpringAwareService"> 
 		</bean> -->
@@ -131,8 +131,8 @@
 	<!--<bean id="wSGameService" class="com.jpizarro.th.server.game.view.axis.WSGameService">
 	</bean>-->
 
-	<!--<bean id="wSUserService" class="com.jpizarro.th.server.user.view.axis.WSUserService">
-	</bean>-->
+	<bean id="wSTeamService" class="com.jpizarro.th.server.team.view.axis.Axis2TeamServiceImpl">
+	</bean>
 
 	<!-- just another bean / interface with a wired implementation, that's injected 
 		by Spring into the Web Service -->
