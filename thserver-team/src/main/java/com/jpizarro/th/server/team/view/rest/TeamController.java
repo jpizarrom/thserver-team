@@ -21,13 +21,12 @@ import com.jpizarro.th.server.team.model.service.TeamService;
 
 @Controller
 @RequestMapping("/teams")
-
 public class TeamController implements GenericController{
 	@Autowired
 	private TeamService teamService;
 	private String XML_VIEW_NAME = "xmlView";
 	
-	@RequestMapping(method=RequestMethod.GET, value="/teams/{id}")
+	@RequestMapping(method=RequestMethod.GET, value="/{id}")
 	public ModelAndView getEntity(@PathVariable Long id) {
 		TeamTO to = null;
 		try {
@@ -43,7 +42,7 @@ public class TeamController implements GenericController{
 		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"team", to);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/teams/{id}/users")
+	@RequestMapping(method=RequestMethod.GET, value="/{id}/users")
 	public ModelAndView gets(@PathVariable Long id) {
 		TeamTO to = null;
 		try {
@@ -66,20 +65,21 @@ public class TeamController implements GenericController{
 	}
 
 	@Override
+	@RequestMapping(method=RequestMethod.POST)
 	public ModelAndView addEntity(String body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ModelAndView updateEntity(String body) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	@RequestMapping(method=RequestMethod.DELETE, value="/teams/{id}")
-	@Transactional
+	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	public ModelAndView removeEntity(@PathVariable Long id) {
 		boolean ret = true;
 		// TODO Auto-generated method stub
