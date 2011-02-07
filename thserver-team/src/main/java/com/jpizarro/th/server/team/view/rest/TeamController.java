@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -64,11 +65,19 @@ public class TeamController implements GenericController{
 		return null;
 	}
 
-	@Override
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView addEntity(String body) {
+	public ModelAndView addEntity(@RequestBody String body) {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+			TeamTO teamTO = new TeamTO();
+			teamTO.setTeamId(16);
+			teamTO.setName("dddd");
+			teamService.create( teamTO );
+		} catch (DuplicateInstanceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"users", body);
 	}
 
 	@Override
@@ -82,15 +91,17 @@ public class TeamController implements GenericController{
 	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	public ModelAndView removeEntity(@PathVariable Long id) {
 		boolean ret = true;
+		TeamTO to = null;
 		// TODO Auto-generated method stub
 		try {
+			to = teamService.find(id);
 			teamService.remove(id);
 		} catch (InstanceNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			ret = false;
 		}
-		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"users", ret);
+		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"user", ret);
 	}
 
 }

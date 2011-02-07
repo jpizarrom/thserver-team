@@ -2,6 +2,7 @@ package com.jpizarro.th.server.team.model.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jpizarro.th.lib.team.entity.TeamTO;
@@ -17,7 +18,7 @@ public class TeamServiceImpl implements TeamService {
 	private TeamAccessor teamAccessor;
 
 	@Override
-	@Transactional
+	@Transactional(propagation=Propagation.REQUIRED)
 	public void create(TeamTO entity) throws DuplicateInstanceException {
 		// TODO Auto-generated method stub
 		teamAccessor.create(TeamUtils.teamFromTeamTO(entity));
@@ -45,7 +46,7 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
 	public void remove(Long id) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		teamAccessor.remove(id);
