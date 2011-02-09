@@ -6,16 +6,22 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jpizarro.th.lib.team.entity.TeamTO;
+import com.jpizarro.th.lib.team.entity.UserTO;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
 import com.jpizarro.th.server.team.model.entity.Team;
+import com.jpizarro.th.server.team.model.entity.User;
 import com.jpizarro.th.server.team.model.persistence.accessor.TeamAccessor;
+import com.jpizarro.th.server.team.model.persistence.accessor.UserAccessor;
 import com.jpizarro.th.server.team.util.TeamUtils;
 
 @Service
 public class TeamServiceImpl implements TeamService {
 	@Autowired
 	private TeamAccessor teamAccessor;
+	
+	@Autowired
+	private UserAccessor userAccessor;
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
@@ -57,6 +63,36 @@ public class TeamServiceImpl implements TeamService {
 	public void join(long userId, long teamId) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	@Transactional
+	public boolean addUser(Long id, UserTO userTO)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		Team team = teamAccessor.find(id);
+		User user = null;
+		try {
+			user = userAccessor.find(userTO.getUserId());
+		}catch (InstanceNotFoundException e){
+			user = TeamUtils.userFromUserTO(userTO);
+			try {
+				userAccessor.create(user);
+			} catch (DuplicateInstanceException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				return false;
+			}
+		}
+		team.addUser(user);
+		return true;
+	}
+
+	@Override
+	public boolean removeUser(Long id, UserTO user)
+			throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

@@ -112,5 +112,19 @@ public class TeamController implements GenericController<TeamTO, Long>{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/{id}/{userid}")
+	@ResponseBody
+	public TeamTO addUser(@PathVariable Long id, @PathVariable Long userid) {
+		// TODO Auto-generated method stub
+		try {
+			teamService.addUser(id, new UserTO(userid) );
+		} catch (InstanceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return this.getEntity(id);
+	}
 
 }

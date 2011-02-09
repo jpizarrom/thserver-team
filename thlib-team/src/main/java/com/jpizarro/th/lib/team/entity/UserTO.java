@@ -16,6 +16,10 @@ public class UserTO implements Serializable{
 	public UserTO() {
 		super();
 	}
+	public UserTO(long userId) {
+		super();
+		this.userId = userId;
+	}
 
 	public void setUserId(long userId) {
 		this.userId = userId;

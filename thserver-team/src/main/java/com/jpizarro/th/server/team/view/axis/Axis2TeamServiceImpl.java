@@ -6,6 +6,7 @@ import javax.jws.soap.SOAPBinding;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jpizarro.th.lib.team.entity.TeamTO;
+import com.jpizarro.th.lib.team.entity.UserTO;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
 import com.jpizarro.th.server.team.model.service.TeamService;
@@ -46,6 +47,12 @@ public class Axis2TeamServiceImpl implements Axis2TeamService {
 		teamService.remove(id);
 		return true;
 		
+	}
+
+	@Override
+	public boolean addUser(Long id, UserTO to) throws InstanceNotFoundException {
+		// TODO Auto-generated method stub
+		return teamService.addUser(id, to);
 	}
 
 

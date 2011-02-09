@@ -1,6 +1,7 @@
 package com.jpizarro.th.server.team.view.axis;
 
 import com.jpizarro.th.lib.team.entity.TeamTO;
+import com.jpizarro.th.lib.team.entity.UserTO;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
 
@@ -13,6 +14,8 @@ public interface Axis2TeamService {
 	
 	TeamTO update(TeamTO entity);
 
-	boolean remove(Long id) throws InstanceNotFoundException;	
+	boolean remove(Long id) throws InstanceNotFoundException;
+	
+	boolean addUser(Long id, UserTO to) throws InstanceNotFoundException;
 	
 }

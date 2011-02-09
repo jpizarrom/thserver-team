@@ -3,11 +3,14 @@ package com.jpizarro.th.server.team.model.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
@@ -55,7 +58,7 @@ public class Team {
 		this.teamId = teamId;
 	}
 
-	@OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	public Set<User> getUsers() {
 		return users;
 	}
@@ -66,7 +69,7 @@ public class Team {
 	
 	public void addUser(User user) {
 		this.users.add(user);
-		user.setTeam(this);
+		user.getTeams().add(this);
 	}
 
 	@Override

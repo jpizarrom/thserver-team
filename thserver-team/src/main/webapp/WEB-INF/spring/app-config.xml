@@ -61,9 +61,9 @@
 	<!-- ======================== Business Objects ======================== -->
 
 	<!-- Accessors. -->
-	<!--<bean id="userAccessor"
-		class="com.jpizarro.th.server.user.model.persistence.accessor.UserAccessorHibernate"
-		p:sessionFactory-ref="sessionFactory" />-->
+	<bean id="userAccessor"
+		class="com.jpizarro.th.server.team.model.persistence.accessor.UserAccessorHibernate"
+		p:sessionFactory-ref="sessionFactory" />
 
 	<bean id="teamAccessor"
 		class="com.jpizarro.th.server.team.model.persistence.accessor.TeamAccessorHibernate"
