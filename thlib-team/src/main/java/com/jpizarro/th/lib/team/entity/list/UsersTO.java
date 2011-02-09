@@ -2,16 +2,15 @@ package com.jpizarro.th.lib.team.entity.list;
 
 import java.util.List;
 
-import com.jpizarro.th.lib.team.entity.TeamTO;
+import com.jpizarro.th.lib.team.entity.UserTO;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-@XStreamAlias("teams")
-public class TeamsTO {
+@XStreamAlias("users")
+public class UsersTO {
 	private Integer count;
 	private Integer start;
 	private Integer total;
-	private List<TeamTO> teams;
-//	private Users users;
+	private List<UserTO> users;
 	public Integer getCount() {
 		return count;
 	}
@@ -30,20 +29,14 @@ public class TeamsTO {
 	public void setTotal(Integer total) {
 		this.total = total;
 	}
-	public List<TeamTO> getTeams() {
-		return teams;
+	public List<UserTO> getUsers() {
+		return users;
 	}
-	public void setTeams(List<TeamTO> teams) {
-		this.teams = teams;
-		this.count = teams.size();
+	public void setUsers(List<UserTO> users) {
+		this.users = users;
+		this.count = users.size();
 	}
-	public void addTeam(TeamTO t){
-		this.addTeam(t);
-	}
-//	public Users getUsers() {
-//		return users;
-//	}
-//	public void setUsers(Users users) {
-//		this.users = users;
-//	}
+	public void addUser(UserTO u){
+		this.users.add(u);
+	}	
 }

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jpizarro.th.lib.team.entity.TeamTO;
 import com.jpizarro.th.lib.team.entity.UserTO;
+import com.jpizarro.th.lib.team.entity.list.UsersTO;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
 import com.jpizarro.th.server.generic.view.rest.GenericController;
@@ -46,7 +47,8 @@ public class TeamController implements GenericController<TeamTO, Long>{
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}/users")
-	public ModelAndView gets(@PathVariable Long id) {
+	@ResponseBody
+	public UsersTO gets(@PathVariable Long id) {
 		TeamTO to = null;
 		try {
 			to = teamService.find(id);
@@ -58,7 +60,10 @@ public class TeamController implements GenericController<TeamTO, Long>{
 			e.printStackTrace();
 		}
 		List<UserTO> users =  to.getUsers();
-		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"users", users);
+		UsersTO us = new UsersTO();
+		us.setUsers(users);
+		return us;
+//		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"users", users);
 	}
 
 	@Override
@@ -93,17 +98,13 @@ public class TeamController implements GenericController<TeamTO, Long>{
 	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
 	public ModelAndView removeEntity(@PathVariable Long id) {
 		boolean ret = true;
-		TeamTO to = null;
-		// TODO Auto-generated method stub
 		try {
-			to = teamService.find(id);
 			teamService.remove(id);
 		} catch (InstanceNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			ret = false;
 		}
-		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"user", ret);
+		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"team", ret);
 	}
 
 	@Override
