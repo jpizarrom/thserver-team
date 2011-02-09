@@ -18,6 +18,7 @@ import com.jpizarro.th.lib.team.entity.TeamTO;
 import com.jpizarro.th.lib.team.entity.UserTO;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
+import com.jpizarro.th.server.generic.view.rest.GenericController;
 import com.jpizarro.th.server.team.model.service.TeamService;
 
 @Controller
