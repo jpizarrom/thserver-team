@@ -23,13 +23,14 @@ import com.jpizarro.th.server.team.model.service.TeamService;
 
 @Controller
 @RequestMapping("/teams")
-public class TeamController implements GenericController{
+public class TeamController implements GenericController<TeamTO, Long>{
 	@Autowired
 	private TeamService teamService;
 	private String XML_VIEW_NAME = "xmlView";
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}")
-	public ModelAndView getEntity(@PathVariable Long id) {
+	@ResponseBody
+	public TeamTO getEntity(@PathVariable Long id) {
 		TeamTO to = null;
 		try {
 			to = teamService.find(id);
@@ -40,8 +41,8 @@ public class TeamController implements GenericController{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		return to;
-		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"team", to);
+		return to;
+//		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"team", to);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}/users")
@@ -61,7 +62,7 @@ public class TeamController implements GenericController{
 	}
 
 	@Override
-	public ModelAndView getEntities() {
+	public List<TeamTO> getEntities() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -83,7 +84,7 @@ public class TeamController implements GenericController{
 
 	@Override
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ModelAndView updateEntity(String body) {
+	public TeamTO updateEntity(@PathVariable Long id, @RequestBody TeamTO entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -103,6 +104,12 @@ public class TeamController implements GenericController{
 			ret = false;
 		}
 		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"user", ret);
+	}
+
+	@Override
+	public TeamTO addEntity(TeamTO body) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
