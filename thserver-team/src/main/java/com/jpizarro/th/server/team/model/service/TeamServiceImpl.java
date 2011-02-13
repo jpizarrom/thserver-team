@@ -74,11 +74,11 @@ public class TeamServiceImpl implements TeamService {
 		
 	}
 
-	@Override
-	public void join(long userId, long teamId) {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void join(long userId, long teamId) {
+//		// TODO Auto-generated method stub
+//		
+//	}
 
 	@Override
 	@Transactional
