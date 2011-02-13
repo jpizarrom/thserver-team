@@ -26,8 +26,19 @@ public class TeamServiceImpl implements TeamService {
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
 	public TeamTO create(TeamTO entity) throws DuplicateInstanceException {
-		// TODO Auto-generated method stub
 		Team t = TeamUtils.teamFromTeamTO(entity);
+		for(UserTO uto: entity.getUsers()){
+			User u = null;
+			try {
+				u = userAccessor.find(uto.getUserId());
+			} catch (InstanceNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				userAccessor.create(new User(uto.getUserId()));
+			}
+			if (u != null)
+				t.getUsers().add(u);
+		}
 		teamAccessor.create(t);
 		return TeamUtils.teamTOFromTeam(t);
 	}
