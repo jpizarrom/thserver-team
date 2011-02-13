@@ -48,9 +48,11 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
+	@Transactional
 	public TeamTO update(TeamTO entity) {
-		// TODO Auto-generated method stub
-		return null;
+		Team team = TeamUtils.teamFromTeamTO(entity);
+		team = teamAccessor.update(team);
+		return TeamUtils.teamTOFromTeam(team);
 	}
 
 	@Override

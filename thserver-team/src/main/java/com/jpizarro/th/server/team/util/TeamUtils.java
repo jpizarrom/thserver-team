@@ -28,6 +28,7 @@ public class TeamUtils extends TeamTO {
 	}
 	public static Team teamFromTeamTO(TeamTO teamTO) {
 		Team team = new Team();
+		team.setTeamId(teamTO.getTeamId());
 		team.setName(teamTO.getName());
 		
 		return team;

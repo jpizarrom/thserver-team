@@ -93,8 +93,15 @@ public class TeamController implements GenericController<TeamTO, Long>{
 
 	@Override
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	@ResponseBody
 	public TeamTO updateEntity(@PathVariable Long id, @RequestBody TeamTO entity) {
-		// TODO Auto-generated method stub
+		entity.setTeamId(id);
+		try {
+			return teamService.update(entity);
+		} catch (InstanceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 
