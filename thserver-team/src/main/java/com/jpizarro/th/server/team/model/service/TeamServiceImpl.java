@@ -25,9 +25,11 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
-	public void create(TeamTO entity) throws DuplicateInstanceException {
+	public TeamTO create(TeamTO entity) throws DuplicateInstanceException {
 		// TODO Auto-generated method stub
-		teamAccessor.create(TeamUtils.teamFromTeamTO(entity));
+		Team t = TeamUtils.teamFromTeamTO(entity);
+		teamAccessor.create(t);
+		return TeamUtils.teamTOFromTeam(t);
 	}
 
 	@Override
@@ -52,7 +54,7 @@ public class TeamServiceImpl implements TeamService {
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Exception.class)
+	@Transactional
 	public void remove(Long id) throws InstanceNotFoundException {
 		// TODO Auto-generated method stub
 		teamAccessor.remove(id);

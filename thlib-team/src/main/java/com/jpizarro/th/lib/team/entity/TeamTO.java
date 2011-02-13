@@ -10,7 +10,6 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 @XStreamAlias("team")
-@XmlRootElement(name="team")
 public class TeamTO implements Serializable {
 	/**
 	 * 

@@ -73,18 +73,22 @@ public class TeamController implements GenericController<TeamTO, Long>{
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	public ModelAndView addEntity(@RequestBody String body) {
-		// TODO Auto-generated method stub
+	@ResponseBody
+	public TeamTO addEntity(@RequestBody TeamTO body) {
+		TeamTO t = null;
 		try {
-			TeamTO teamTO = new TeamTO();
-			teamTO.setTeamId(16);
-			teamTO.setName("dddd");
-			teamService.create( teamTO );
+			t = teamService.create( body );
 		} catch (DuplicateInstanceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"users", body);
+//		try {
+//			t = teamService.find(body.getTeamId());
+//		} catch (InstanceNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		return t;
 	}
 
 	@Override
@@ -107,12 +111,6 @@ public class TeamController implements GenericController<TeamTO, Long>{
 		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"team", ret);
 	}
 
-	@Override
-	public TeamTO addEntity(TeamTO body) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	@RequestMapping(method=RequestMethod.GET, value="/{id}/{userid}")
 	@ResponseBody
 	public TeamTO addUser(@PathVariable Long id, @PathVariable Long userid) {
