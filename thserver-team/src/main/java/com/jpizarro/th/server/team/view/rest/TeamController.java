@@ -22,9 +22,9 @@ import com.jpizarro.th.lib.team.entity.list.UsersTO;
 import com.jpizarro.th.lib.team.util.TeamRestURL;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.DuplicateInstanceException;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
+import com.jpizarro.th.server.generic.util.ResourceNotFoundException;
 import com.jpizarro.th.server.generic.view.rest.GenericController;
 import com.jpizarro.th.server.team.model.service.TeamService;
-import com.jpizarro.th.server.team.util.ResourceNotFoundException;
 
 @Controller
 @RequestMapping(TeamRestURL.ENTITY)
