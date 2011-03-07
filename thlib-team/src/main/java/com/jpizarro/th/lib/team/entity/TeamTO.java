@@ -4,24 +4,33 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 @XStreamAlias("team")
+@Root
 public class TeamTO implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 731485816032540739L;
+	@Element(required=false)
 	private long teamId;
+	@Element(required=false)
 	private String name;
+	@Element(required=false)
 	private String description;
+//	@Element(required=false)
 //	private List<Competitor> competitors;
 //	private List<Hint> hints;
+	@Element(required=false)
 	private int currentUsers;
 
+	@ElementList
 	private List<UserTO> users = new ArrayList<UserTO>();
 	
 	public TeamTO(String name) {

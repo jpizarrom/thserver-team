@@ -142,5 +142,24 @@ public class TeamController implements GenericController<TeamTO, Long>{
 		
 		return this.getEntity(id);
 	}
+	
+	@RequestMapping(method=RequestMethod.GET, value=TeamRestURL.USER_BY_ID)
+	@ResponseBody
+	public UserTO getEntityUser(@PathVariable Long id) {
+		UserTO to = null;
+		try {
+			to = teamService.findUser(id);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ResourceNotFoundException();
+		} catch (InstanceNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new ResourceNotFoundException();
+		}
+		return to;
+//		return new ModelAndView(XML_VIEW_NAME, BindingResult.MODEL_KEY_PREFIX+"team", to);
+	}
 
 }

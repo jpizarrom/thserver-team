@@ -110,4 +110,12 @@ public class TeamServiceImpl implements TeamService {
 		return false;
 	}
 
+	@Override
+	public UserTO findUser(Long id) throws InstanceNotFoundException {
+		User user = userAccessor.find(id);
+		UserTO to = TeamUtils.userTOFromUser(user);
+
+		return to;
+	}
+
 }

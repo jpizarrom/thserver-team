@@ -10,5 +10,7 @@ public interface TeamService extends GenericService <TeamTO, Long>{
 //	void join(long userId, long teamId);
 	public boolean addUser(Long teamId, UserTO user) throws InstanceNotFoundException;
 	public boolean removeUser(Long teamId, UserTO user) throws InstanceNotFoundException;
+	
+	UserTO findUser(Long id) throws InstanceNotFoundException;
 
 }

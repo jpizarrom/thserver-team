@@ -39,5 +39,10 @@ public class TeamUtils extends TeamTO {
 		
 		return user;
 	}
+	public static UserTO userTOFromUser(User user) {
+		UserTO to = new UserTO();
+		to.setUserId(user.getUserId());
+		return to;
+	}
 	
 }
