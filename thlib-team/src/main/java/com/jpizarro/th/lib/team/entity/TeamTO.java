@@ -30,7 +30,7 @@ public class TeamTO implements Serializable {
 	@Element(required=false)
 	private int currentUsers;
 
-	@ElementList
+	@ElementList(required=false)
 	private List<UserTO> users = new ArrayList<UserTO>();
 	
 	public TeamTO(String name) {

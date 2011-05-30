@@ -1,8 +1,11 @@
 package com.jpizarro.th.lib.team.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -18,6 +21,9 @@ public class UserTO implements Serializable{
 	@Element(required=false)
 	private long userId;
 
+	@ElementList(required=false)
+	private List<TeamTO> teams = new ArrayList<TeamTO>();
+	
 	public UserTO() {
 		super();
 	}
@@ -32,6 +38,12 @@ public class UserTO implements Serializable{
 
 	public long getUserId() {
 		return userId;
+	}
+	public List<TeamTO> getTeams() {
+		return teams;
+	}
+	public void setTeams(List<TeamTO> teams) {
+		this.teams = teams;
 	}
 
 }

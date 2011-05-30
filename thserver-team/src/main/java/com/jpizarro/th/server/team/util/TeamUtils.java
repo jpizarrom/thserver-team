@@ -42,6 +42,17 @@ public class TeamUtils extends TeamTO {
 	public static UserTO userTOFromUser(User user) {
 		UserTO to = new UserTO();
 		to.setUserId(user.getUserId());
+		
+		for (Team team :user.getTeams()){
+			TeamTO tto = TeamUtils.teamTOFromTeam(team);
+			
+			TeamTO rtto = new TeamTO();
+			rtto.setTeamId(tto.getTeamId());
+			rtto.setCurrentUsers(tto.getCurrentUsers());
+			
+			to.getTeams().add(rtto);
+//		TeamTO tto = new TeamTO();
+			}
 		return to;
 	}
 	
