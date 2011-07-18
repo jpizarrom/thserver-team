@@ -33,6 +33,27 @@
 				<updatePolicy>never</updatePolicy>
 			</snapshots>
 		</repository>
+		<!-- For testing against latest Spring snapshots -->
+        <repository>
+            <id>org.springframework.maven.snapshot</id>
+            <name>Spring Maven Snapshot Repository</name>
+            <url>http://maven.springframework.org/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+		<!-- For developing against latest Spring milestones -->
+        <repository>
+            <id>org.springframework.maven.milestone</id>
+            <name>Spring Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
 <!-- 		<repository> -->
 <!-- 			<id>wicket-snaps</id> -->
 <!-- 			<url>http://wicketstuff.org/maven/repository</url> -->
@@ -155,6 +176,13 @@
 			<artifactId>hibernate-annotations</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+
+		<!-- cloudfoundry -->
+        <dependency>
+            <groupId>org.cloudfoundry</groupId>
+            <artifactId>cloudfoundry-runtime</artifactId>
+            <version>${org.cloudfoundry-version}</version>
+        </dependency>
 		<!--******************* Spring ******************* -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -672,5 +700,6 @@
 		<axis2.version>1.5.2</axis2.version>
 		<jdbc.version>5.1.13</jdbc.version>
 		<simple-version>2.4.1</simple-version>
+		<org.cloudfoundry-version>0.6.1</org.cloudfoundry-version>
 	</properties>
 </project>
