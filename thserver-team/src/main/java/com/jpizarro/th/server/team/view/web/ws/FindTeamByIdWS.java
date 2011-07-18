@@ -1,8 +1,8 @@
 package com.jpizarro.th.server.team.view.web.ws;
 
 import org.apache.wicket.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
-import org.wicketstuff.annotation.strategy.MountMixedParam;
+//import org.wicketstuff.annotation.mount.MountPath;
+//import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import com.jpizarro.th.lib.team.entity.TeamTO;
 import com.jpizarro.th.lib.team.util.xml.xstream.TeamXStreamFactory;
@@ -14,8 +14,8 @@ import com.jpizarro.th.server.team.view.web.application.WicketApplication;
 
 import com.thoughtworks.xstream.XStream;
 
-@MountPath(path = "/ws/findTeamById")
-@MountMixedParam(parameterNames={"teamId"})
+//@MountPath(path = "/ws/findTeamById")
+//@MountMixedParam(parameterNames={"teamId"})
 public class FindTeamByIdWS extends GenericWS {
 
 	public FindTeamByIdWS(PageParameters parameters) {

@@ -1,8 +1,8 @@
 package com.jpizarro.th.server.team.view.web.ws;
 
 import org.apache.wicket.PageParameters;
-import org.wicketstuff.annotation.mount.MountPath;
-import org.wicketstuff.annotation.strategy.MountMixedParam;
+//import org.wicketstuff.annotation.mount.MountPath;
+//import org.wicketstuff.annotation.strategy.MountMixedParam;
 
 import com.jpizarro.th.lib.team.util.xml.xstream.TeamXStreamFactory;
 import com.jpizarro.th.server.generic.model.persistence.util.exceptions.InstanceNotFoundException;
@@ -16,8 +16,8 @@ import es.sonxurxo.androidrunner.model.service.game.util.exception.MaxUsersReach
 import es.sonxurxo.androidrunner.model.service.game.util.exception.TimeOutException;
 
 
-@MountPath(path = "/ws/joinGame")
-@MountMixedParam(parameterNames={"gameId", "teamId"})
+//@MountPath(path = "/ws/joinGame")
+//@MountMixedParam(parameterNames={"gameId", "teamId"})
 public class JoinGameWS extends GenericWS {
 
 	public JoinGameWS(PageParameters parameters) {
